@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) ${YEAR} ${PACKAGE_NAME}
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.ext.web.ownership.OwnershipEdit"
+        datasource="ownershipDs"
+        messagesPack="com.company.ext.entity.ownership">
+    <dsContext>
+        <datasource id="ownershipDs"
+                    class="com.company.ext.entity.Ownership"
+                    view="ownership-edit"/>
+    </dsContext>
+    <layout expand="tabsheet"
+            height="100%"
+            spacing="true"
+            width="100%">
+        <tabSheet id="tabsheet">
+            <tab id="mainTab"
+                 caption="msg://mainTab"
+                 margin="true">
+                <scrollBox id="scrollBox56"
+                           height="100%">
+                    <fieldGroup id="fieldGroup"
+                                datasource="ownershipDs">
+                        <column width="250px">
+                            <field id="name"/>
+                            <field id="code"/>
+                        </column>
+                    </fieldGroup>
+                </scrollBox>
+            </tab>
+        </tabSheet>
+        <iframe id="windowActions"
+                screen="editWindowActions"/>
+    </layout>
+</window>

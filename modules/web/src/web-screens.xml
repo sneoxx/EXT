@@ -2,7 +2,11 @@
 
     <include file="/screens.xml"/>
 
+    <screen id="ext$Ownership.browse"
+            template="com/company/ext/web/ownership/ownership-browse.xml"/>
     <screen id="ext$Ownership.lookup"
             template="com/company/ext/web/ownership/ownership-browse.xml"/>
+    <screen id="ext$Ownership.edit"
+            template="com/company/ext/web/ownership/ownership-edit.xml"/>
 
 </screen-config>
