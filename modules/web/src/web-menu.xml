@@ -1,4 +1,6 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application" insertBefore="administration">
     </menu>
+    <item id="ext$Ownership.lookup"
+          insertAfter="ts$SubscriberEdm.browse"/>
 </menu-config>

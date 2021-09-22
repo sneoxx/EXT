@@ -1,3 +1,4 @@
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
+    <view entity="ext$Ownership" name="ownership-browse" extends="_local"/>
 </views>

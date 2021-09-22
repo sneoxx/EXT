@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.ext.web.ownership.OwnershipBrowse"
+        lookupComponent="ownershipTable"
+        messagesPack="com.company.ext.web.ownership">
+    <dsContext>
+        <collectionDatasource id="ownershipDs"
+                              class="com.company.ext.entity.Ownership"
+                              view="ownership-browse">
+            <query>
+                <![CDATA[select e from ext$Ownership e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="ownershipTable"
+            spacing="true">
+        <filter id="genericFilter"
+                applyTo="ownershipTable"
+                datasource="ownershipDs"
+                stylename="edit-area">
+            <properties include=".*"/>
+        </filter>
+        <table id="ownershipTable"
+               multiselect="true"
+               presentations="true"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="code"/>
+                <column id="name"/>
+            </columns>
+            <rows datasource="ownershipDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="ownershipTable.create"/>
+                <button id="editBtn"
+                        action="ownershipTable.edit"/>
+                <button id="removeBtn"
+                        action="ownershipTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>
