@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) ${YEAR} ${PACKAGE_NAME}
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.ext.web.ui.company.ExtCompanyBrowser"
+        extends="com/haulmont/thesis/web/ui/company/company-browse.xml"
+        messagesPack="com.company.ext.web.ownership">
+    <dsContext>
+        <groupDatasource id="companiesDs"
+                         class="com.company.ext.entity.ExtCompany"
+                         view="ExtCompany-browse"/>
+    </dsContext>
+    <layout>
+        <vbox id="table-panel">
+            <filter id="genericFilter"/>
+            <groupTable id="companiesTable">
+                <columns>
+                    <column id="ownership"></column>
+                </columns>
+            </groupTable>
+        </vbox>
+    </layout>
+</window>

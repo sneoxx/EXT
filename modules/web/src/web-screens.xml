@@ -9,4 +9,8 @@
     <screen id="ext$Ownership.edit"
             template="com/company/ext/web/ownership/ownership-edit.xml"/>
 
+    <screen id="df$Company.browse"
+            template="com/company/ext/web/ui/company/ext-company-browse.xml"/>
+    <screen id="df$Company.edit"
+            template="com/company/ext/web/ui/company/ext-company-edit.xml"/>
 </screen-config>

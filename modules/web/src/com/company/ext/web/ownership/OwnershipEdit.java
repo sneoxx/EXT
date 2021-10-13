@@ -6,22 +6,20 @@ package com.company.ext.web.ownership;
 
 import com.company.ext.entity.Ownership;
 import com.haulmont.cuba.core.app.UniqueNumbersService;
+import com.haulmont.cuba.core.global.CommitContext;
+import com.haulmont.cuba.gui.WindowParams;
 import com.haulmont.cuba.gui.components.AbstractEditor;
-import com.haulmont.cuba.gui.components.Field;
 import com.haulmont.cuba.gui.components.FieldGroup;
-import com.haulmont.cuba.gui.components.PickerField;
-import com.haulmont.cuba.security.entity.User;
-import com.haulmont.thesis.core.entity.Employee;
-import com.haulmont.thesis.core.entity.Organization;
-import com.haulmont.thesis.core.entity.TsUser;
+import com.haulmont.cuba.gui.data.DsContext;
 import org.slf4j.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Map;
-import java.util.Set;
 
-public class OwnershipEdit  extends AbstractEditor<Ownership> {
+
+public class OwnershipEdit extends AbstractEditor<Ownership> {
 
     @Named("fieldGroup")
     protected FieldGroup fieldGroup;
@@ -34,19 +32,52 @@ public class OwnershipEdit  extends AbstractEditor<Ownership> {
     @Override
     public void init(Map<String, Object> params){
         super.init(params);
-//        fieldGroup.setVisible("code", false);
+        fieldGroup.setVisible("code", false);
         fieldGroup.setEditable("code", false);
     }
 
     @Override
-    protected void initNewItem(Ownership item) {
-        super.initNewItem(item);
-        String uniqueNumber = String.valueOf(( uniqueNumbersService.getNextNumber("CreditTypeCode")));
-        item.setCode(uniqueNumber);
-        log.info("Номер для CreditType успешно сгенерирован и установлен {} :", uniqueNumber);
+    protected void initNewItem(final Ownership item) {
+        getDsContext().addListener(new DsContext.CommitListenerAdapter() {
+            @Override
+            public void beforeCommit(CommitContext context) {
+                String uniqueNumber = String.valueOf(( uniqueNumbersService.getNextNumber("CreditTypeCode")));
+                item.setCode(uniqueNumber);
+                context.getCommitInstances().add(item);
+                log.info("Номер для Ownership успешно сгенерирован и установлен {} :", uniqueNumber);
+            }
+        });
     }
 
+//    public void init(Map<String, Object> params) {
+//        getDsContext().addListener(new DsContext.CommitListenerAdapter() {
+//            @Override
+//            public void beforeCommit(CommitContext context) {
+//                if (customer != null)
+//                    context.getCommitInstances().add(customer);
+//            }
+//        });
+//    }
 
+
+//    @PostConstruct
+//    @Override
+//    public void init(Map<String, Object> params){
+//        super.init(params);
+//        String uniqueNumber = String.valueOf(( uniqueNumbersService.getNextNumber("CreditTypeCode")));
+//        Ownership item = WindowParams.ITEM.getEntity(params);
+//        item.setCode(uniqueNumber);
+//        log.info("Номер для Ownership успешно сгенерирован и установлен {} :", uniqueNumber);
+//        fieldGroup.setEditable("code", false);
+//    }
+
+//    @Override
+//    protected void initNewItem(Ownership item) {
+//        super.initNewItem(item);
+//        String uniqueNumber = String.valueOf(( uniqueNumbersService.getNextNumber("CreditTypeCode")));
+//        item.setCode(uniqueNumber);
+//        log.info("Номер для COwnership успешно сгенерирован и установлен {} :", uniqueNumber);
+//    }
 
 //    @Override
 //    public void onBeforeInsert(OwnershipEdit) {

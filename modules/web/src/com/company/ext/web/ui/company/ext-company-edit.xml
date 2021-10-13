@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.company.ext.web.ui.company.ExtCompanyEdit"
+        extends="com/haulmont/thesis/web/ui/company/company-edit.xml"
+        messagesPack="com.company.ext.web.ui.company">
+    <dsContext>
+        <datasource id="companyDs"
+                    class="com.company.ext.entity.ExtCompany"/>
+        <collectionDatasource id="ownershipsDs"
+                              class="com.company.ext.entity.Ownership"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from ext$Ownership e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout>
+        <tabSheet id="tabsheet">
+            <tab id="mainTab">
+                <scrollBox id="scrollBox58">
+                    <grid id="grid"
+                          margin="true,false,false,false">
+                        <rows>
+                            <row>
+                                <label id ="ownershipLabel"
+                                       value="msg://Ownership"/>
+                                <lookupPickerField id="ownership"
+                                                   datasource="companyDs"
+                                                   optionsDatasource="ownershipsDs"
+                                                   property="ownership"
+                                                   width="250px"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </scrollBox>
+            </tab>
+            <tab id="contactPersonTab">
+                <vbox id="vbox74"
+                      margin="true,false,false,false"/>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

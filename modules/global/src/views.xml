@@ -2,4 +2,19 @@
 
     <view entity="ext$Ownership" name="ownership-browse" extends="_local"/>
     <view entity="ext$Ownership" name="ownership-edit" extends="_local"/>
+
+    <view class="com.company.ext.entity.ExtCompany"
+          extends="_local"
+          name="ExtCompany-browse"
+          overwrite="true">
+        <property name="ownership"
+                  view="_local"/>
+    </view>
+    <view class="com.company.ext.entity.ExtCompany"
+          extends="edit"
+          name="edit"
+          overwrite="true">
+        <property name="ownership"
+                  view="_local"/>
+    </view>
 </views>

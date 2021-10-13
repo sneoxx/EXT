@@ -9,6 +9,7 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
     <persistence-unit name="EXT" transaction-type="RESOURCE_LOCAL">
         <class>com.company.ext.entity.Ownership</class>
+        <class>com.company.ext.entity.ExtCompany</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
 </persistence>
